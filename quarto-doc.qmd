@@ -1,0 +1,84 @@
+---
+title: "LS 빅데이터 스쿨 3일차"
+author: "김주영"
+format: html
+editor: visual
+jupyter: python3
+editor_options: 
+  chunk_output_type: console
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+### 파이썬 코드 청크
+* 단축기: ctrl + alt + I
+
+### 코드 청크 종류
+
+2가지 종류가 있음
+
+1. 인라인 코드청크: 백틱 하나로 묶음
+1. 디스플레이 코드청크: 백틱 3개로 묶음
+1. 아이템 A
+1. 아이템 B
+
+## 코드 청크 실행 옵션'
+
+옵션은 `#|`로 시작함
+
+* `echo` 옵션: 코드를 문서에 보여줌
+* `ecal` 옵션: 코드를 돌릴 것인가, 그냥 둘 것인가를 결정
+
+
+```{python}
+#| echo: true
+#| evel: false
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{python}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+## 안녕
+
+- [x] 화분 물 주기
+- [-] 화분 물 주기
+- [ ] 화분 물 주기
+
+## 링크 넣는 법
+[슬기로운 통계생활](https://statisticsplaybook.com/obsidian-markdown-cheatsheet/)
+
+## 이미지 넣는 법
+![위키피디아 흑요석|100x100](./img/img1.jpg)
+
+## 각주
+
+이것은 간단한 각주[^1]입니다.
+이것은 간단한 각주[^3]입니다.
+
+[^1]: 이것은 참조된 텍스트입니다.
+[^3]: 이것은 참조된 텍스트입니다.
+
+
+## 수식 입력 방법
+*인라인 수식: $ 하나로 감싸준다(본문에 입력)
+*디스플레이 수식: $ 두개로 감싸준다(본문과 별개로 독립적인 문단)
+
+문장안에 숫자 $5^2$를 넣어보자
+여러 숫자들을 따로 떼어 표시하자
+
+$$
+x^2 + y^2 = 5
+$$

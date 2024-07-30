@@ -659,8 +659,8 @@ z_005 = norm.ppf(0.95, loc=0, sclae=1)
 z_005
 
 #신뢰구간
-x.mean() + ㅋ_005 * 6 / np.sqrt(16)
-x.mean() - ㅋ_005 * 6 / np.sqrt(16)
+x.mean() + z_005 * 6 / np.sqrt(16)
+x.mean() - z_005 * 6 / np.sqrt(16)
 
 
 # 데이터로부터 E[X^2] 구하기

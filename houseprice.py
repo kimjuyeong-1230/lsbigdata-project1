@@ -1,6 +1,7 @@
 #### 240724 ####
 import pandas as pd
-
+import numpy as np
+import matplotlib.pyplot as plt
 house_df = pd.read_csv("./data/houseprice/train.csv")
 house_df.shape
 
@@ -147,3 +148,52 @@ sub_df["SalePrice"].fillna(mean, inplace=True)
 sub_df
 sub_df.to_csv("sample_submission5.csv", index = False) 
 sub_df
+
+
+
+#### 240731 ####
+house = pd.read_csv("./data/houseprice/train.csv")
+house.shape # (1460, 81)
+house.tail(10).info()
+
+# GarageYrBlt: 차고 건축 연도
+# GarageQual: 차고 품질
+
+house["GarageYrBlt"].min() #1900
+house["GarageYrBlt"].max() #2010
+
+# 1960년대 이후만 확인
+house = house[house["GarageYrBlt"] >= 1960]
+house.shape # (1064, 81)
+
+df = house[["GarageYrBlt", "GarageQual"]]
+df
+
+
+# 10년 단위로 구간 나누기
+vec_x=np.array([1960, 1970, 1980, 1990, 2000, 2010])
+labels = ["1960s", "1970s", "1980s", "1990s", "2000s"]
+#pd.cut(vec_x, bins = labels, right=False)
+
+df['year_group'] = pd.cut(df['GarageYrBlt'],
+                    bins=vec_x,
+                    labels=labels,
+                    right=False)  
+df
+
+# 연도별 GarageQual 빈도 계산
+grouped = df.groupby('year_group')['GarageQual'].value_counts().unstack(fill_value=0)
+grouped
+
+import matplotlib.pyplot as plt
+
+# 막대 그래프 시각화
+grouped.plot(kind='bar', figsize=(4, 3))
+plt.title('GarageQual Counts by Year Group')
+plt.xlabel('Year Group')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.legend(title='GarageQual', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.tight_layout()
+plt.show()
+plt.clf()
